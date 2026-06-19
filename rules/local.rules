@@ -1,1 +1,87 @@
+# =========================
+# Snort IDS Rules - SOC Lab
+# =========================
 
+# ICMP Ping Detection
+alert icmp any any -> $HOME_NET any (msg:"ICMP Ping detected"; sid:100001; rev:1;)
+
+# SSH Detection
+alert tcp any any -> $HOME_NET 22 (msg:"SSH detected"; sid:100002; rev:1;)
+
+# FTP Detection
+alert tcp any any -> $HOME_NET 21 (msg:"FTP Attempt on the server"; sid:100003; rev:1;)
+
+# HTTP Detection
+alert tcp any any -> $HOME_NET 80 (msg:"HTTP Attempt on the server"; sid:100004; rev:1;)
+
+# HTTPS Detection
+alert tcp any any -> $HOME_NET 443 (msg:"HTTPS Attempt on the server"; sid:100005; rev:1;)
+
+# TELNET Detection
+alert tcp any any -> $HOME_NET 23 (msg:"TELNET Attempt on the server"; sid:100006; rev:1;)
+
+# DNS Detection
+alert udp any any -> $HOME_NET 53 (msg:"DNS Query Attempt"; sid:100007; rev:1;)
+
+# SMTP Detection
+alert tcp any any -> $HOME_NET 25 (msg:"SMTP Attempt"; sid:100008; rev:1;)
+
+# POP3 Detection
+alert tcp any any -> $HOME_NET 110 (msg:"POP3 Attempt"; sid:100009; rev:1;)
+
+# SMB Detection
+alert tcp any any -> $HOME_NET 445 (msg:"SMB Attempt"; sid:100010; rev:1;)
+
+# RDP Detection
+alert tcp any any -> $HOME_NET 3389 (msg:"RDP Attempt"; sid:100011; rev:1;)
+
+# MYSQL Detection
+alert tcp any any -> $HOME_NET 3306 (msg:"MySQL Attempt"; sid:100012; rev:1;)
+
+# LDAP Detection
+alert tcp any any -> $HOME_NET 389 (msg:"LDAP Access detected"; sid:100013; rev:1;)
+
+# SYN Scan Detection
+alert tcp any any -> $HOME_NET any (msg:"SYN Scan detected"; flags:S; sid:100014; rev:1;)
+
+# Reverse Shell Detection
+alert tcp any any -> $HOME_NET 4444 (msg:"Reverse shell attempt detected"; sid:100015; rev:1;)
+
+# SSH Brute Force
+alert tcp any any -> $HOME_NET 22 (msg:"SSH Brute Force attempt"; flow:to_server,established; detection_filter:track by_src, count 5, seconds 60; sid:100016; rev:1;)
+
+# Telnet Brute Force
+alert tcp any any -> $HOME_NET 23 (msg:"Telnet Brute Force attempt"; flow:to_server,established; detection_filter:track by_src, count 5, seconds 60; sid:100017; rev:1;)
+
+# Nmap Scan Detection
+alert tcp any any -> $HOME_NET any (msg:"Nmap SYN Scan detected"; flags:S; threshold:type both, track by_src, count 10, seconds 5; sid:100018; rev:1;)
+
+# FTP Brute Force
+alert tcp any any -> $HOME_NET 21 (msg:"FTP Brute Force attempt"; flow:to_server,established; detection_filter:track by_src, count 5, seconds 60; sid:100019; rev:1;)
+
+# Suspicious Download (wget/curl)
+alert tcp any any -> $HOME_NET 80 (msg:"Suspicious download attempt (wget/curl)"; pcre:"/(wget|curl)/iU"; sid:100020; rev:1;)
+
+# SMB Brute Force
+alert tcp any any -> $HOME_NET 445 (msg:"SMB Brute Force attempt"; flow:to_server,established; detection_filter:track by_src, count 5, seconds 60; sid:100021; rev:1;)
+
+# XSS Detection
+alert tcp any any -> $HOME_NET 80 (msg:"XSS Attempt detected"; content:"<script>"; sid:100022; rev:1;)
+
+# HTTP Flood (DDoS)
+alert tcp any any -> $HOME_NET 80 (msg:"HTTP Flood DDoS attempt"; detection_filter:track by_src, count 50, seconds 5; sid:100023; rev:1;)
+
+# Admin Page Access
+alert tcp any any -> $HOME_NET 80 (msg:"Admin page access attempt"; pcre:"/(admin|dashboard|manage)/i"; sid:100024; rev:1;)
+
+# SSRF Attempt
+alert tcp any any -> $HOME_NET 80 (msg:"SSRF attempt (localhost access)"; content:"127.0.0.1"; http_uri; sid:100025; rev:1;)
+
+# Sensitive Data Exposure
+alert tcp any any -> $HOME_NET 80 (msg:"Sensitive data over HTTP (password)"; content:"password="; http_client_body; sid:100026; rev:1;)
+
+# File Upload Attack
+alert tcp any any -> $HOME_NET 80 (msg:"Possible malicious file upload"; content:".php"; http_client_body; sid:100027; rev:1;)
+
+# Scanner Detection (sqlmap, nmap, burp)
+alert tcp any any -> $HOME_NET 80 (msg:"Web Scanner detected"; pcre:"/(sqlmap|nmap|nikto|burp)/i"; sid:100028; rev:1;)

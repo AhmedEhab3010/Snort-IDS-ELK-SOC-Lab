@@ -1,13 +1,13 @@
 # Snort IDS & ELK Stack SOC Lab
 
-## 📌 Overview
+##  Overview
 This project is a Security Operations Center (SOC) lab that simulates real-world network attack detection using Snort IDS integrated with the ELK Stack (Elasticsearch, Logstash, Kibana).
 
 The system monitors network traffic, detects malicious activities, and visualizes security events in real time.
 
 ---
 
-## 🏗 Architecture
+##  Architecture
 
 The SOC Lab consists of the following components:
 
@@ -21,7 +21,7 @@ The SOC Lab consists of the following components:
 
 ---
 
-## 🍯 Honeypot Component
+##  Honeypot Component
 
 The project includes a Honeypot system used to simulate vulnerable services such as SSH and Web applications.
 
@@ -34,7 +34,7 @@ It is used to:
 
 ---
 
-## ⚙️ Technologies Used
+##  Technologies Used
 
 - Snort IDS
 - ELK Stack (Elasticsearch, Logstash, Kibana)
@@ -45,7 +45,7 @@ It is used to:
 
 ---
 
-## 🚨 Detection Capabilities
+##  Detection Capabilities
 
 - ICMP Ping Detection
 - SSH / FTP / Telnet Detection
@@ -60,7 +60,7 @@ It is used to:
 
 ---
 
-## 🧪 Testing Scenarios
+##  Testing Scenarios
 
 All testing scenarios used to validate the system are documented here:
 
@@ -74,7 +74,7 @@ Includes:
 
 ---
 
-## 📊 ELK Dashboard
+##  ELK Dashboard
 
 The Kibana dashboards provide real-time visualization of:
 - Network attacks
@@ -84,7 +84,7 @@ The Kibana dashboards provide real-time visualization of:
 
 ---
 
-## 🐳 Docker Deployment
+##  Docker Deployment
 
 ELK Stack was deployed using Docker containers:
 
@@ -94,13 +94,13 @@ ELK Stack was deployed using Docker containers:
   
 ---
 
-## 🎯 Project Objective
+##  Project Objective
 
 To demonstrate how Intrusion Detection Systems (IDS) combined with SIEM tools can detect, analyze, and visualize cyber attacks in a controlled SOC environment.
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Ahmed Ehab**  
 Computer Science Student - New Cairo Academy  
@@ -109,7 +109,7 @@ Computer Science Student - New Cairo Academy
 
 ---
 
-## ⭐ Notes
+##  Notes
 
 - Credentials and sensitive data are removed for security reasons.
 - This is a simulated SOC environment for educational purposes.

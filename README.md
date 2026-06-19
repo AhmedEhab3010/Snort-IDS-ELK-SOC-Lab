@@ -19,6 +19,13 @@ The SOC Lab consists of the following components:
 - Kibana for visualization
 - Dockerized ELK Stack deployment
 
+##  Data Flow Pipeline
+1. Attacker generates malicious traffic
+2. Snort detects suspicious packets using rule-based engine
+3. Alerts are logged in /var/log/snort
+4. Filebeat ships logs to Elasticsearch
+5. Kibana visualizes real-time attacks
+
 ---
 
 ##  Honeypot Component
